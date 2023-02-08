@@ -1,18 +1,20 @@
 const mongoose = require('mongoose')
 
 const bookingSchema = new mongoose.Schema({
-    eventName:{
+    event:{
         type:String,
         required:true,
     },
-    ticketAmount:{
+    ticketNumber:{
         type:Number,
         required:true,
     },
-    user:{
-        type:String,
-        required:true,
-    }
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    
+  
 },{
     timestamps:true
 })

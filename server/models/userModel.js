@@ -28,6 +28,9 @@ const userSchema = new mongoose.Schema({
     },
     bookings:{
         type:Array,
+    },
+    tickets:{
+        type:Array
     }
 },{
     timestamps:true,
