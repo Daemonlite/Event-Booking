@@ -7,20 +7,32 @@ const eventSchema = new mongoose.Schema({
     },
     date:{
         type:String,
-        required:true,
+        require:true,
+    },
+    description:{
+        type:String,
+        require:true,
     },
     location:{
         type:String,
-        required:true,
+        require:true,
     },
     category:{
         type:String,
-        required:true,
+        require:true,
     },
-    price:{
-        type:String,
-        required:false,
+    ticketPrice:{
+        type:Number,
+        require:true,
+    },
+    numberOfTickets:{
+        type:Number,
+        require:true
+    },
+    tickets:{
+        type:Array,
     }
+
 },{
     timestamps:true,
 })

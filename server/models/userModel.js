@@ -13,6 +13,10 @@ const userSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    password:{
+        type:String,
+        required:true,
+    },
     profile:{
         type:String,
         required:false,
@@ -29,4 +33,4 @@ const userSchema = new mongoose.Schema({
     timestamps:true,
 })
 
-mondule.exports = mongoose.model('User',userSchema)
+module.exports = mongoose.model('User',userSchema)

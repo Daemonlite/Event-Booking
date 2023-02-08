@@ -12,6 +12,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
 connectDb()
-
+//routes
+app.use('/api/users',require('./routes/userRoutes'))
+app.use('/api/events',require('./routes/eventRoutes'))
 
 app.listen(port,()=>console.log(`server running on port ${port}`))
