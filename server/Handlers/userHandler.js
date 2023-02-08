@@ -1,69 +1,66 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const cloudinary = require('cloudinary');
 
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
-
-const getUsers = async (req,res,next) => {
-  let users;
+const getUsers = async (req, res) => {
   try {
-    users = await User.find()
+    const users = await User.find();
+    return res.status(200).json(users);
   } catch (error) {
-    console.log(error)
+    console.error(error);
+    return res.status(500).json({ message: "Failed to retrieve users" });
   }
-  if(!users){
-    res.status(404).json({message:'no user found'})
-  }
-  
-  return res.status(200).json(users)
-}
-const register = async (req, res,) => {
-  const {
-    fullName,
-    username,
-    email,
-    password,
-    profile,
-    bookings,
-    isAdmin
-  } = req.body;
+};
 
-  if (!username || !email || !password) {
-    res.status(400).json({ message: "Please add all fields" });
+const register = async (req, res) => {
+  const { fullName, username, email, password, isAdmin, profile  } = req.body;
+
+  // Validate input
+  if (!username || !email || !password || !profile) {
+    return res.status(400).json({ message: "Please provide all required fields" });
   }
 
-  //check if user exists
+  // Check if user already exists
   const userExists = await User.findOne({ email });
-
   if (userExists) {
-    res.status(400)
-    return res.json("user already exists");
+    return res.status(400).json({ message: "A user with this email already exists" });
   }
 
+  // Upload profile image
+  let profileImageUrl;
+  try {
+    const image = req.file;
+    const result = await cloudinary.uploader.upload(image.path);
+    profileImageUrl = result.secure_url;
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ message: "Failed to upload profile image" });
+  }
 
-  //hashpassord
-  const salt = await bcrypt.genSalt(10);
-  const hashedPassword = await bcrypt.hash(password, salt);
+  // Hash password
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-  //createUser
+  // Create user
   const user = await User.create({
     fullName,
     username,
     email,
     password: hashedPassword,
-    profile,
-    bookings,
-    isAdmin
+    profile: profileImageUrl,
+    bookings: [],
+    isAdmin,
+  });
 
-  })
-
-  if(user){
-    res.status(201).json(user);
-  } else {
-    res.status(400).json({message:"invalid user credentials"});
-  }
-}
-
+  return res.status(201).json(user);
+};
 
 const loginUser = async (req, res) => {
 const { email, password } = req.body;
@@ -113,10 +110,19 @@ const deleteUser = async (req,res) => {
   
     res.status(200).json({ message: "user  deleted successfully" });
   }
+
+  const userProfileImage = async (req,res) => {
+    const { image } = req.body;
+  
+  
+  
+    
+  }
 module.exports = {
     getUsers,
     register,
     loginUser,
     updateUserInfo,
-    deleteUser
+    deleteUser,
+    userProfileImage
 }
