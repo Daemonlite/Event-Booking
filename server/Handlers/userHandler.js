@@ -24,7 +24,7 @@ const register = async (req, res) => {
   const { fullName, username, email, password, isAdmin, profile  } = req.body;
 
   // Validate input
-  if (!username || !email || !password || !profile) {
+  if (!username || !email || !password ) {
     return res.status(400).json({ message: "Please provide all required fields" });
   }
 

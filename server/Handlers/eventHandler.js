@@ -16,7 +16,7 @@ const getEvents = async (req,res) => {
 }
 
 const createEvent = async (req,res) => {
-    const {eventName,date,location,category,ticketPrice,tickets,numberOfTickets,description} = req.body
+    const {eventName,date,location,category,ticketPrice,tickets,numberOfTickets,description,user,image} = req.body
     
    if(!eventName || !date || !location || !ticketPrice|| !numberOfTickets || !description){
     return res.json({message:"please add all fields"})
@@ -30,7 +30,9 @@ const createEvent = async (req,res) => {
         description,
         ticketPrice,
         numberOfTickets,
-        tickets
+        tickets,
+        user,
+        image
     }) 
     
     if(create){

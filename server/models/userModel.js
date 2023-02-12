@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
     },
     profile:{
         type:String,
-        required:true,
+        required:false,
         default:"https://media.istockphoto.com/id/1277785530/photo/social-network-media-connections.jpg?b=1&s=170667a&w=0&k=20&c=9WQkG-XreI4zlZN1n6Mkz17EzkKGCEqdgG6mZnwkII8="
     },
     isAdmin:{

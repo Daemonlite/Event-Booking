@@ -13,6 +13,10 @@ const eventSchema = new mongoose.Schema({
         type:String,
         require:true,
     },
+    image:{
+     type:String,
+     require:false
+    },
     location:{
         type:String,
         require:true,
@@ -31,6 +35,10 @@ const eventSchema = new mongoose.Schema({
     },
     tickets:{
         type:Array,
+    },
+    user:{
+        type:String,
+        require:true,  
     }
 
 },{

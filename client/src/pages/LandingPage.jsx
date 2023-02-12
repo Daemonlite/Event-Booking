@@ -19,7 +19,7 @@ const LandingPage = () => {
         </p>
 
         <div class="btns">
-          <div class="first-btn">Start your search &#8594;</div>
+          <div class="first-btn"><a href="/register" className="start">Start your search &#8594;</a></div>
         </div>
       </div>
       <div class="head-img">

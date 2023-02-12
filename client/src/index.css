@@ -148,4 +148,110 @@
 .name{
   color: green;
 }
+.start{
+  text-decoration: none;
+  color: #fff;
+}
+.position{
+  margin-top: 100px;
+}
+.form-control{
+  width: 400px !important;
+  margin: 10px;
 
+ 
+  
+}
+
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 500px;
+  height: 500px;
+  margin-left: 440px;
+  margin-top: 100px ;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+  
+}
+.btn{
+  width: 400px !important;
+  margin-left:50px ;
+ 
+
+}
+.inputs{
+  display: grid;
+  place-content: center;
+  margin-top: 40px;
+
+}
+.hr{
+  width: 400px;
+  margin-left: 49px;
+}
+.hr2{
+  width: 400px;
+  margin-left: 49px;
+  margin-top: 5px;
+}
+
+.asking{
+  text-align: center;
+  margin-top: -20px;
+  text-decoration: none;
+}
+.login{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 500px;
+  height: 370px;
+  margin-left: 440px;
+  margin-top: 140px ;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+}
+.ask{
+  text-align: center;
+  margin-top: -19px;
+  text-decoration: none
+}
+a{
+  text-decoration: none !important;
+}
+.event{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  width: 500px;
+  height: 550px;
+  margin-left: 440px;
+  margin-top: 130px ;
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+  font-weight: lighter;
+}
+.other{
+  font-weight: lighter;
+}
+ul{
+  list-style-type: none;
+}
+
+.home-links{
+  color:cadetblue;
+  font-weight: bold;
+
+
+}
+.home-nav{
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  
+}
