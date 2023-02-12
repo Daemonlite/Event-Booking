@@ -16,12 +16,13 @@ const Home = () => {
 
       {events.map((res) => (
         <div className="id" key={res._id}>
-          <div className="event-img">{res.image}</div>
+          <img src={res.image} alt='event-images' className="event-img"/>
           <div className="name">{res.eventName}</div>
           <div className="date">{res.date}</div>
           <div className="descr">{res.description}</div>
           <div className="category">{res.category}</div>
           <div className="price">{res.ticketPrice}</div>
+          <div className="btn btn-primary btn-sm">Book Event</div>
         </div>
       ))}
     </div>

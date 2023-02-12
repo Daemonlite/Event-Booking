@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const cloudinary = require('cloudinary');
+const cloudinary = require('cloudinary').v2
 
 // Configure Cloudinary
 cloudinary.config({
@@ -38,7 +38,7 @@ const register = async (req, res) => {
   let profileImageUrl;
   try {
     const image = req.file;
-    const result = await cloudinary.uploader.upload(image.path);
+    const result = await cloudinary.uploader.upload(profile);
     profileImageUrl = result.secure_url;
   } catch (error) {
     console.error(error);

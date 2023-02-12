@@ -15,7 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <div>
-      <ToastContainer position="Top-center" />
+    <ToastContainer position='top-center'/>
       <BrowserRouter>
         <Navbar />
         <Routes>

@@ -1,4 +1,11 @@
 const Event = require('../models/eventModel')
+const cloudinary = require('cloudinary').v2
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET,
+});
 
 const getEvents = async (req,res) => {
     let event;
@@ -16,12 +23,22 @@ const getEvents = async (req,res) => {
 }
 
 const createEvent = async (req,res) => {
-    const {eventName,date,location,category,ticketPrice,tickets,numberOfTickets,description,user,image} = req.body
-    
-   if(!eventName || !date || !location || !ticketPrice|| !numberOfTickets || !description){
-    return res.json({message:"please add all fields"})
-   }
 
+    const {eventName,date,location,category,ticketPrice,tickets,numberOfTickets,description,user,image} = req.body
+
+  if(!eventName || !date || !location || !ticketPrice){
+    return res.status(400).json({message:"add all fields"})
+  }
+ 
+
+   let profileImageUrl;
+   try {
+    const result = await cloudinary.uploader.upload(image);
+    profileImageUrl = result.secure_url;
+  } catch (error) {
+    console.error(error);
+    return res.status(400).json({ message: "Failed to upload profile image" });
+  }
     const create = await Event.create({
         eventName,
         date,
@@ -29,7 +46,6 @@ const createEvent = async (req,res) => {
         category,
         description,
         ticketPrice,
-        numberOfTickets,
         tickets,
         user,
         image

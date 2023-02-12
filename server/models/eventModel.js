@@ -31,7 +31,7 @@ const eventSchema = new mongoose.Schema({
     },
     numberOfTickets:{
         type:Number,
-        require:true
+        require:false
     },
     tickets:{
         type:Array,

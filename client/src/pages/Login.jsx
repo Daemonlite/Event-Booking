@@ -50,7 +50,7 @@ const Login = () => {
           />
         </div>
 
-        <button type="submit" className="btn btn-secondary btn-lg">
+        <button type="submit" className="btn btn-secondary btn-lg button">
        Log In
         </button>
         <hr className="hr" />

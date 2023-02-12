@@ -18,7 +18,7 @@ const CreateEvent = () => {
     const file = e.target.files[0];
     const formData = new FormData();
     formData.append('file', file);
-    formData.append('upload_preset', 'your_upload_preset'); 
+    formData.append('upload_preset', 'u7qxbla7'); 
 
     try {
       const res = await axios.post('https://api.cloudinary.com/v1_1/dexc98myq/image/upload', formData);
@@ -47,6 +47,9 @@ const CreateEvent = () => {
         if (res.data) {
           navigate("/home");
         }
+    })
+    .catch((err)=>{
+        toast.error(err.response.data)
     })
     } 
   return (
