@@ -1,7 +1,7 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const cloudinary = require('cloudinary').v2
+const cloudinary = require("cloudinary").v2;
 
 // Configure Cloudinary
 cloudinary.config({
@@ -21,17 +21,21 @@ const getUsers = async (req, res) => {
 };
 
 const register = async (req, res) => {
-  const { fullName, username, email, password, isAdmin, profile  } = req.body;
+  const { fullName, username, email, password, isAdmin, profile } = req.body;
 
   // Validate input
-  if (!username || !email || !password ) {
-    return res.status(400).json({ message: "Please provide all required fields" });
+  if (!username || !email || !password) {
+    return res
+      .status(400)
+      .json({ message: "Please provide all required fields" });
   }
 
   // Check if user already exists
   const userExists = await User.findOne({ email });
   if (userExists) {
-    return res.status(400).json({ message: "A user with this email already exists" });
+    return res
+      .status(400)
+      .json({ message: "A user with this email already exists" });
   }
 
   // Upload profile image
@@ -63,66 +67,64 @@ const register = async (req, res) => {
 };
 
 const loginUser = async (req, res) => {
-const { email, password } = req.body;
-const user = await User.findOne({ email });
-!user && res.status(400).json("user cant be found");
-if (user && (await bcrypt.compare(password, user.password))) {
-  const { username, id, isAdmin } = user;
-  const token = jwt.sign({ username, id, isAdmin }, process.env.SECRET, {
-    expiresIn: "2d",
-  });
+  const { email, password } = req.body;
+  const user = await User.findOne({ email });
+  !user && res.status(400).json("user cant be found");
+  if (user && (await bcrypt.compare(password, user.password))) {
+    const { username, id, isAdmin } = user;
+    const token = jwt.sign({ username, id, isAdmin }, process.env.SECRET, {
+      expiresIn: "2d",
+    });
 
-  res.status(200).json({
-    ...user._doc,
-    token,
-  });
-} else {
-  res.status(400).json("invalid user credentials");
-}
+    res.status(200).json({
+      ...user._doc,
+      token,
+    });
+  } else {
+    res.status(400).json("invalid user credentials");
+  }
 };
 
 const generateToken = (id) => {
-return jwt.sign({ id }, process.env.SECRET, {
-  expiresIn: "2d",
-});
+  return jwt.sign({ id }, process.env.SECRET, {
+    expiresIn: "2d",
+  });
 };
 
-const updateUserInfo = async (req,res) => {
+const updateUserInfo = async (req, res) => {
   const userId = req.params.id;
   const updatedInfo = req.body;
 
-  const upUserInfo = await User.findByIdAndUpdate(userId ,updatedInfo, { new: true });
+  const upUserInfo = await User.findByIdAndUpdate(userId, updatedInfo, {
+    new: true,
+  });
 
   if (!upUserInfo) {
     return res.status(404).json({ message: "User not found" });
   }
 
   res.status(200).json(upUserInfo);
-}
-const deleteUser = async (req,res) => {
-    const  userId = req.params.id;
-  
-    const user = await User.findByIdAndDelete(userId);
-  
-    if (!user ) {
-      return res.status(404).json({ message: "user   not found" });
-    }
-  
-    res.status(200).json({ message: "user  deleted successfully" });
+};
+const deleteUser = async (req, res) => {
+  const userId = req.params.id;
+
+  const user = await User.findByIdAndDelete(userId);
+
+  if (!user) {
+    return res.status(404).json({ message: "user   not found" });
   }
 
-  const userProfileImage = async (req,res) => {
-    const { image } = req.body;
-  
-  
-  
-    
-  }
+  res.status(200).json({ message: "user  deleted successfully" });
+};
+
+const userProfileImage = async (req, res) => {
+  const { image } = req.body;
+};
 module.exports = {
-    getUsers,
-    register,
-    loginUser,
-    updateUserInfo,
-    deleteUser,
-    userProfileImage
-}
+  getUsers,
+  register,
+  loginUser,
+  updateUserInfo,
+  deleteUser,
+  userProfileImage,
+};

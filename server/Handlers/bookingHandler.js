@@ -15,31 +15,33 @@ const getBookings = async (req, res) => {
 };
 
 const createBooking = async (req, res) => {
-  const { event, ticketNumber, user } = req.body;
+  const { eventName, date, location, user,image } = req.body;
 
-  if (!event || ticketNumber || !user) {
+  if (!eventName || !user || !date || !location) {
     res.status(400).json({ message: "Enter required fields" });
   }
 
   let existingUser;
   try {
-    existingUser = await User.findById(user)
+    existingUser = await User.findById(user);
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-  if(!existingUser){
-    return res.status(400).json({message:"User not found"})
+  if (!existingUser) {
+    return res.status(400).json({ message: "User not found" });
   }
 
   const books = new Booking({
-    event,
-    ticketNumber,
+    eventName,
+    date,
+    location,
+    image,
     user,
   });
 
   try {
     await books.save();
-   existingUser.bookings.unshift(books)
+    existingUser.bookings.unshift(books);
     await existingUser.save();
   } catch (error) {
     console.log(error);
@@ -49,24 +51,34 @@ const createBooking = async (req, res) => {
 };
 
 const deleteBooking = async (req, res, next) => {
-    const id = req.params.id;
-  
-    let book;
-    try {
-      book = await Booking.findOne({ _id: id });
-      if (!book) {
-        return res.status(404).json({ message: "The specified Booking was not found." });
-      }
-      await Booking.deleteOne({ _id: id });
-      await User.updateOne({ _id: book.user }, { $pull: { bookings: { _id: book._id } } });
-    } catch (err) {
-      return res.status(500).json({ message: "Unable to delete the  booking. An internal server error has occurred." });
+  const id = req.params.id;
+
+  let book;
+  try {
+    book = await Booking.findOne({ _id: id });
+    if (!book) {
+      return res
+        .status(404)
+        .json({ message: "The specified Booking was not found." });
     }
-    return res.status(200).json({ message: "Successfully deleted the  booking." });
-  };
+    await Booking.deleteOne({ _id: id });
+    await User.updateOne(
+      { _id: book.user },
+      { $pull: { bookings: { _id: book._id } } }
+    );
+  } catch (err) {
+    return res.status(500).json({
+      message:
+        "Unable to delete the  booking. An internal server error has occurred.",
+    });
+  }
+  return res
+    .status(200)
+    .json({ message: "Successfully deleted the  booking." });
+};
 
 module.exports = {
-    getBookings,
-    createBooking,
-    deleteBooking
-}
+  getBookings,
+  createBooking,
+  deleteBooking,
+};

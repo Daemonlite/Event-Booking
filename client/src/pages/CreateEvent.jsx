@@ -76,6 +76,7 @@ const CreateEvent = () => {
             value={description}
             onChange={(e)=>setDescription(e.target.value)}
           />
+           <label htmlFor="profile" className="lab">Add event photo</label>
           <input
             className="form-control other"
             type="file"

@@ -5,6 +5,7 @@ import Register from "./pages/Register";
 import ProfilePage from "./pages/ProfilePage";
 import Home from "./pages/Home";
 import CreateEvent from "./pages/CreateEvent";
+import Booking from './pages/Bookings'
 import Error from "./components/Error";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
@@ -25,6 +26,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="events/create" element={<CreateEvent/>} />
+          <Route path="/booking" element={<Booking/>} />
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>

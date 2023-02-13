@@ -1,12 +1,24 @@
 const mongoose = require('mongoose')
 
 const bookingSchema = new mongoose.Schema({
-    event:{
+    eventName:{
+        type:String,
+        required:true,
+    },
+    location:{
+        type:String,
+        required:true,
+    },
+    date:{
         type:String,
         required:true,
     },
     ticketNumber:{
         type:Number,
+        required:false,
+    },
+    image:{
+        type:String,
         required:true,
     },
     user: {

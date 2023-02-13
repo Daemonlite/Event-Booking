@@ -4,7 +4,7 @@ const cors = require('cors')
 const app = express()
 const port = process.env.PORT
 const connectDb = require('./database/connect')
-const cloudinary = require('cloudinary').v2
+
 
 
 //middlewares
@@ -14,11 +14,7 @@ app.use(express.urlencoded({extended:false}))
 
 connectDb()
 
-cloudinary.config({
-    cloud_name: process.env.CLOUD_NAME,
-    api_key: process.env.API_KEY,
-    api_secret: process.env.API_SECRET,
-  });
+
 //routes
 app.use('/api/users',require('./routes/userRoutes'))
 app.use('/api/events',require('./routes/eventRoutes'))

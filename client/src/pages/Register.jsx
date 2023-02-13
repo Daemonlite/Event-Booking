@@ -78,6 +78,7 @@ const Register = () => {
             value={email}
             onChange={(e)=>setEmail(e.target.value)}
           />
+          <label htmlFor="profile" className="lab">Add profile photo</label>
           <input
             className="form-control"
             type="file"
