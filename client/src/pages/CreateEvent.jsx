@@ -114,7 +114,7 @@ const CreateEvent = () => {
         </div>
 
 
-        <button type="submit" className="btn btn-secondary btn-lg">
+        <button type="submit" className="btn btn-secondary btn-lg but">
         Create Event
         </button>
 

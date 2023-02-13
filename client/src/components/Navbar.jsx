@@ -30,34 +30,8 @@ function Navbar() {
           <li className="nav-item">
             <a className="nav-link" href="/">About Us</a>
           </li>
-          <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-             Events
-            </a>
-            <ul className="dropdown-menu">
-                
-              <li><a className="dropdown-item" href="/">Corporate events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Social events</a></li>
-              <li>
-                <hr className="dropdown-divider"/>
-              </li>
-              <li><a className="dropdown-item" href="/">Arts and cultural events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Sports events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Educational events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Religious events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Political events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Community events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Entertainment events</a></li>
-              <hr className="dropdown-divider"/>
-              <li><a className="dropdown-item" href="/">Outdoor events</a></li>
-            </ul>
+      
+
             <hr className=""/>
             <li className="nav-item">
             <a className="nav-link  " href="/profile">
@@ -65,7 +39,7 @@ function Navbar() {
              </a>
           </li>
          <hr />
-          </li>
+         
       
         </ul>
       

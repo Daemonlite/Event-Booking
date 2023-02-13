@@ -229,10 +229,10 @@ a{
   gap: 20px;
   border: 1px solid #ddd;
   border-radius: 20px;
-  width: 500px;
-  height: 550px;
+  width: 510px;
+  height: 580px;
   margin-left: 440px;
-  margin-top: 130px ;
+  margin-top: 110px ;
   box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
   font-weight: lighter;
 }
@@ -246,8 +246,6 @@ ul{
 .home-links{
   color:cadetblue;
   font-weight: bold;
-
-
 }
 .home-nav{
   display: flex;
@@ -261,3 +259,77 @@ ul{
 .lab{
   margin-left: 9px;
 }
+.but{
+  width: 25rem;
+  margin-left: 3rem;
+}
+.books{
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.check{
+  
+ height: fit-content;
+}
+.adds{
+  display: flex;
+  gap: 10px;
+}
+.add{
+  display: flex;
+ gap: 10px;
+}
+
+.card{
+  box-shadow: 0px 2.98256px 7.4564px rgba(0, 0, 0, 0.3);
+}
+.prices{
+  display:flex;
+  gap: 10px;
+}
+.growl{
+  display: flex;
+}
+.home-img{
+  height: 100%!important;
+ 
+}
+
+.map{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: #000;
+}
+.map-item{
+  border: 1px solid #ddd;
+  background-color: #ddd;
+ cursor: pointer;
+  border-radius: 10px;
+  width: 180px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.line{
+  color: #000;
+  width: 100%;
+  margin-left: 0;
+  margin-top: 0;
+}
+.let{
+margin-left: 390px;
+}
+.card-title{
+  text-transform: capitalize !important;
+}
+.home-nav{
+ 
+  color: #000;
+}
+

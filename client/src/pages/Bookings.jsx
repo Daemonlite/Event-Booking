@@ -5,13 +5,14 @@ import { toast } from "react-toastify";
 const Bookings = () => {
   const [user, setUser] = useState("");
   const [booking, setBooking] = useState([]);
+ 
 
   useEffect(() => {
     axios
       .get("http://localhost:7000/api/booking")
       .then(res => setBooking(res.data))
       .catch(err => console.log(err.response.data));
-  }, []);
+  }, [booking]);
 
   useEffect(() => {
     const User = JSON.parse(localStorage.getItem("userInfo"));
@@ -34,23 +35,31 @@ const Bookings = () => {
         toast.error("Something went wrong");
       });
   };
-  const filteredBooking = booking.filter(book => book.user === user);
+  const filteredBooking = booking.filter(book => book.user  === user._id)
+
   return (
     
-    <div className="position">
-      {booking.map(res => (
+    <div className="position books">
+      {filteredBooking.map(res => (
         <div key={res._id}>
-          <div className="image">
-            <img src={res.image} alt="" />
-          </div>
-          <div className="name">{res.eventName}</div>
-          <div className="location">{res.location}</div>
-          <div className="date">{res.date}</div>
-          <p onClick={() => deleteBooking(res._id)} className="btn btn-primary">
-            delete
-          </p>
+ 
+ <div className="card" style={{width:"20rem"}}>
+
+  <div className="card-body">
+    <h5 className="card-title">{res.eventName}</h5>
+    <p className="card-text">{res.location}</p>
+    <div className="card-text">${res.price}</div>
+    <p className="card-text">{res.date}</p>
+ <div className="adds">
+ <p onClick={() => deleteBooking(res._id)} className="btn btn-primary">Delete</p>
+    <a href="/checkout" className="btn btn-primary check">checkout</a>
+ </div>
+  </div>
+</div>
         </div>
       ))}
+
+
     </div>
   );
 };

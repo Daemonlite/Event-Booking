@@ -1,51 +1,50 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import {toast} from  'react-toastify'
+import { useState } from 'react';
+import Sports from '../Events/Sports';
+import Corporate from '../Events/Corporate';
+import Entertainment from '../Events/Entertainment';
+import Politics from '../Events/Politics';
+import Arts from '../Events/Arts'
+import Community from '../Events/Community';
+import Outdoor from '../Events/Outdoor';
+import Religious from '../Events/Religious';
+import Educational from '../Events/Educational';
+import Social from '../Events/Social';
+
 const Home = () => {
-  const [events, setEvents] = useState([]);
-const  [user,setuser]= useState("")
+  const [activeItem, setActiveItem] = useState('Corporate events');
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:7000/api/events")
-      .then((res) => setEvents(res.data))
-      .catch((err) => console.log(err));
-    
-  },[]);
-
-useState(()=>{
-  const User = JSON.parse(localStorage.getItem("userInfo"))
-  setuser(User)
-},[])
-
-
+  const handleClick = item => {
+    setActiveItem(item);
+  };
 
   return (
     <div className="position">
-      {events.map((res) => (
-        <div className="id" key={res._id}>
-          <img src={res.image} alt="event-images" className="event-img" />
-          <div className="name">{res.eventName}</div>
-          <div className="date">{res.date}</div>
-          <div className="descr">{res.description}</div>
-          <div className="category">{res.category}</div>
-          <div className="price">${res.ticketPrice}</div>
-          <div onClick={()=>{
-             axios.post('http://localhost:7000/api/booking/',{
-              eventName:res.eventName,
-              date:res.date,
-              location:res.location,
-              image:res.image,
-              user:user._id,
-            })
-            .then(()=>toast.success('Event booked successfully'))
-            .catch((err)=> toast.error(err.response.data))
-          }} className="btn btn-primary btn-sm">Book Event</div>
-          {user._id === res.user && <p onClick={()=>axios.delete(`http://localhost:7000/api/events/${res._id}`)} className='btn btn-primary'>delete</p>}
-        </div>
-      ))}
+      <ul className="map">
+        <li className="map-item" onClick={() => handleClick('Corporate events')}>Corporate events</li>
+        <li className="map-item" onClick={() => handleClick('Social events')}>Social events</li>
+        <li className="map-item" onClick={() => handleClick('Arts and cultural events')}>Arts and cultural events</li>
+        <li className="map-item" onClick={() => handleClick('Sports events')}>Sports events</li>
+        <li className="map-item" onClick={() => handleClick('Educational events')}>Educational events</li>
+        <li className="map-item" onClick={() => handleClick('Religious events')}>Religious events</li>
+        <li className="map-item" onClick={() => handleClick('Political events')}>Political events</li>
+        <li className="map-item" onClick={() => handleClick('Community events')}>Community events</li>
+        <li className="map-item" onClick={() => handleClick('Entertainment events')}>Entertainment events</li>
+        <li className="map-item" onClick={() => handleClick('Outdoor events')}>Outdoor events</li>
+      </ul>
+      <hr className="line hr"/>
+      {activeItem === 'Corporate events' && <Corporate />}
+      {activeItem === 'Sports events' && <Sports />}
+      {activeItem === 'Political events' && <Politics />}
+      {activeItem === 'Entertainment events' && <Entertainment />}
+      {activeItem === 'Social events' && <Social/>}
+      {activeItem === 'Arts and cultural events' && <Arts/>}
+      {activeItem === 'Educational events' && <Educational/>}
+      {activeItem === 'Religious events' && <Religious/>}
+      {activeItem ===  'Outdoor events' && <Outdoor/>}
+      {activeItem === 'Community events' && <Community/>}
     </div>
   );
 };
 
 export default Home;
+

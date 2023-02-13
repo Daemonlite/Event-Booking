@@ -15,7 +15,7 @@ const getBookings = async (req, res) => {
 };
 
 const createBooking = async (req, res) => {
-  const { eventName, date, location, user,image } = req.body;
+  const { eventName, date, location, user,image,price } = req.body;
 
   if (!eventName || !user || !date || !location) {
     res.status(400).json({ message: "Enter required fields" });
@@ -37,6 +37,7 @@ const createBooking = async (req, res) => {
     location,
     image,
     user,
+    price,
   });
 
   try {
