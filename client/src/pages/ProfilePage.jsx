@@ -27,38 +27,7 @@ const ProfilePage = () => {
         Logout
       </div>
       <div>
-        <ul className="home-nav">
-          <li>
-            <a href="/events/create" className="home-links">
-              Create Event
-            </a>
-          </li>
-          <li>
-            <a href="/payments" className="home-links">
-              Make payments
-            </a>
-          </li>
-          <li>
-            <a href="/payments" className="home-links">
-              My Events
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://meet.google.com"
-              target="_blank"
-              rel="noreferrer"
-              className="home-links"
-            >
-              Create Live Meeting
-            </a>
-          </li>
-          <li>
-            <a href="/booking" className="home-links">
-              My Bookings
-            </a>
-          </li>
-        </ul>
+       
       </div>
       <hr />
     </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Sports from '../Events/Sports';
 import Corporate from '../Events/Corporate';
 import Entertainment from '../Events/Entertainment';
@@ -9,13 +9,22 @@ import Outdoor from '../Events/Outdoor';
 import Religious from '../Events/Religious';
 import Educational from '../Events/Educational';
 import Social from '../Events/Social';
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [activeItem, setActiveItem] = useState('Corporate events');
+  const navigate = useNavigate();
+  const [user, setuser] = useState("");
 
   const handleClick = item => {
     setActiveItem(item);
   };
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+    setuser(user);
+    if (!user) navigate("/login");
+  }, [navigate]);
 
   return (
     <div className="position">

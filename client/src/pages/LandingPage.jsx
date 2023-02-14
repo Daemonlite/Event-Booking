@@ -36,7 +36,7 @@ const LandingPage = () => {
       </div>
 
       <section>
-        <h3 className="sec-head">
+        <h3 className="sec-head" id="events">
           Whatever you organise, we’ve got you covered
         </h3>
 
@@ -107,7 +107,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      <article>
+      <article id="features">
         <h3 className="art-head">
           Great value features,for low or no ticket fees
         </h3>
@@ -192,27 +192,151 @@ const LandingPage = () => {
         </div>
       </article>
 
-      {/* <main>
-    <h3 className="main-head">We support thousands of happy businesses</h3>
-   <div className="main">
-    <div className="mate">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-        Voluptatum exercitationem obcaecati id, magnam quos pariatur
-         doloremque maxime ut quod ratione? 
-        Voluptas maxime ea incidunt vero dolores earum a mollitia! Eligendi?
-  
-    </div>
-    <div className="mages">
-        <img src="https://cdn.bookwhen.com/assets/home/clients/testimonials/Josie-83a1b1ee7bff2cf91c95d207ffe810f93ceac9d7dad90085aa0af0eb367d02f8.png" alt="" className="image-fluid" />
-      <div className="inform">
-      <p className="name">Jollie</p>
-        <p className="council">Bhuddist Council of PMB</p>
-      </div>
-    </div>
-   </div>
+      <main id="about">
+        <h3 className="main-head">We support thousands of happy businesses</h3>
+        <div className="flex">
+          <div className="main">
+            <div className="mate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatum exercitationem obcaecati id, magnam quos pariatur
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+            </div>
+            <div className="mages">
+              <img
+                src="https://cdn.bookwhen.com/assets/home/clients/testimonials/Josie-83a1b1ee7bff2cf91c95d207ffe810f93ceac9d7dad90085aa0af0eb367d02f8.png"
+                alt=""
+                className="image-fluid"
+              />
+              <div className="inform">
+                <p className="name">Jollie</p>
+                <p className="council">Bhuddist Council of PMB</p>
+              </div>
+            </div>
+          </div>
 
-   
-    </main> */}
+          <div className="main">
+            <div className="mate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatum exercitationem obcaecati id, magnam quos pariatur
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+            </div>
+            <div className="mages">
+              <img
+                src="https://cdn.bookwhen.com/assets/home/clients/testimonials/Matt-cbf871a451fa4f1198c8f7fd2f127d92e3bc50abff6caca5bf56c19de2103da9.png"
+                alt=""
+                className="image-fluid"
+              />
+              <div className="inform">
+                <p className="name">Lewis</p>
+                <p className="council">Baton Boat Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="main">
+            <div className="mate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatum exercitationem obcaecati id, magnam quos pariatur
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+
+            </div>
+            <div className="mages">
+              <img
+                src="https://cdn.bookwhen.com/assets/home/clients/Hazel-4506d261a4103cfc3db7fbb87455e316a869e706944edd7145b1d8254b4b782c.jpg"
+                alt=""
+                className="image-fluid"
+              />
+              <div className="inform">
+                <p className="name">Portia</p>
+                <p className="council">Labadi beach resort</p>
+              </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+        <div className="flex">
+          <div className="main">
+            <div className="mate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatum exercitationem obcaecati id, magnam quos pariatur
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+            </div>
+            <div className="mages">
+              <img
+                src="https://cdn.bookwhen.com/assets/home/clients/testimonials/Craig-5866296a608497c2a3fd328300453022f1fbb8890b98559a9d9fbf57e9862024.png"
+                alt=""
+                className="image-fluid"
+              />
+              <div className="inform">
+                <p className="name">Sean</p>
+                <p className="council">Bulls Boat club</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="main">
+            <div className="mate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatum exercitationem obcaecati id, magnam quos pariatur
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+            </div>
+            <div className="mages">
+              <img
+                src="https://cdn.bookwhen.com/assets/home/others/ActivityTrustRetreats-988cba3ad1f889ebbd7647395aa0ba5a05f01824da6abda5a8bd949d483e90a3.jpg"
+                alt=""
+                className="image-fluid"
+              />
+              <div className="inform">
+                <p className="name">Lindsey</p>
+                <p className="council">Fence yoga Club</p>
+              </div>
+            </div>
+          </div>
+
+          <div className="main">
+            <div className="mate">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+              Voluptatum exercitationem obcaecati id, magnam quos pariatur
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+              doloremque maxime ut quod ratione? Voluptas maxime ea incidunt
+              vero dolores earum a mollitia! Eligendi?
+
+            </div>
+            <div className="mages">
+              <img
+                src="https://cdn.bookwhen.com/assets/home/clients/testimonials/Joe-9afa6fea068fc5cec2ec8cb7401de7e11ac65e171430bbde22dcccddef892f31.png"
+                alt=""
+                className="image-fluid"
+              />
+              <div className="inform">
+                <p className="name">Joe</p>
+                <p className="council">Founder,Asterix Health</p>
+              </div>
+              
+            </div>
+
+            
+          </div>
+        </div>
+      </main>
     </div>
   );
 };

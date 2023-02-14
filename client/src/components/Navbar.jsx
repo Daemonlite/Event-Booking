@@ -1,8 +1,15 @@
-
+import {useEffect,useState} from 'react'
 import {AiOutlineUser} from 'react-icons/ai'
 
 
+
 function Navbar() {
+  const [user,setuser] = useState("")
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userInfo"));
+    setuser(user);
+  }, [user]);
 
 
   return (
@@ -24,12 +31,40 @@ function Navbar() {
           <li className="nav-item">
             <a className="nav-link active" aria-current="page" href="/home">Home</a>
           </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/">Pricing</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="/">About Us</a>
-          </li>
+ {!user ? (<><li className="nav-item">
+                  <a className="nav-link" href="#features">Features</a>
+                </li>
+
+                <li className="nav-item">
+                    <a className="nav-link" href="#events">Events</a>
+                  </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="#about">About Us</a>
+                  </li>
+
+                  <li className="nav-item">
+                    <a className="nav-link" href="/login">Login</a>
+                  </li>
+                  
+                  </>):(
+                     <><li className="nav-item">
+                      <a className="nav-link" href="/events/create">Create Event</a>
+                    </li>
+                    <li className="nav-item">
+                        <a className="nav-link" href="/booking">My Bookings</a>
+                      </li>
+                      <li className="nav-item">
+                        <a className="nav-link" href="/event/me">My Events</a>
+                      </li>
+
+                      <li className="nav-item">
+                        <a className="nav-link" href="/payment">Payments</a>
+                      </li>
+                      </>
+          ) 
+          
+        
+        }
       
 
             <hr className=""/>

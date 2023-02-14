@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import {useNavigate} from 'react-router-dom'
 
 const Bookings = () => {
+  const navigate = useNavigate()
   const [user, setUser] = useState("");
   const [booking, setBooking] = useState([]);
  
@@ -18,6 +20,8 @@ const Bookings = () => {
     const User = JSON.parse(localStorage.getItem("userInfo"));
     setUser(User);
   }, []);
+
+
 
  
 
