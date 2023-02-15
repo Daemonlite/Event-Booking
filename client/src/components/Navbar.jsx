@@ -1,17 +1,20 @@
 import {useEffect,useState} from 'react'
-import {AiOutlineUser} from 'react-icons/ai'
-
+import {useNavigate} from 'react-router-dom'
 
 
 function Navbar() {
+  const navigate = useNavigate()
   const [user,setuser] = useState("")
 
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem("userInfo"));
     setuser(user);
-  }, [user]);
+  }, []);
 
-
+  const logout = () => {
+    localStorage.removeItem("userInfo");
+    navigate("/login");
+  };
   return (
     <div>
       <nav className="navbar bg-body-secondary fixed-top">
@@ -20,7 +23,7 @@ function Navbar() {
     <button className="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span className="navbar-toggler-icon"></span>
     </button>
-    <div className="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div className="offcanvas offcanvas-end" tabIndex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div className="offcanvas-header">
         <h5 className="offcanvas-title" id="offcanvasNavbarLabel">Page|Events</h5>
         <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -34,7 +37,6 @@ function Navbar() {
  {!user ? (<><li className="nav-item">
                   <a className="nav-link" href="#features">Features</a>
                 </li>
-
                 <li className="nav-item">
                     <a className="nav-link" href="#events">Events</a>
                   </li>
@@ -42,9 +44,7 @@ function Navbar() {
                     <a className="nav-link" href="#about">About Us</a>
                   </li>
 
-                  <li className="nav-item">
-                    <a className="nav-link" href="/login">Login</a>
-                  </li>
+               
                   
                   </>):(
                      <><li className="nav-item">
@@ -68,20 +68,29 @@ function Navbar() {
       
 
             <hr className=""/>
-            <li className="nav-item">
-            <a className="nav-link  " href="/profile">
-             <AiOutlineUser size={25} style={{marginTop:"-5.8px"}}/>  Profile
-             </a>
-          </li>
-         <hr />
+ {user ? ( <><li className="nav-item com">
+                  <img src={user.profile} alt="" className="image-fluid" />
+                  <div className="names">
+                    {user.fullName}
+                    <br />
+                    @{user.username}
+                  </div>
+                  <br />
+
+                </li>
+                <hr />
+                <div className="btn btn-secondary btn-lg log" onClick={logout}>Logout</div></>
+          ):(
+   <li className="nav-item">
+   <a className="nav-link btn btn-secondary btn-lg text-light" href="/login">Login</a>
+   <hr />
+ </li>
+          )}
+     
          
       
         </ul>
-      
-        <form className="d-flex mt-3" role="search">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-          <button className="btn btn-outline-success" type="submit">Search</button>
-        </form>
+  
       </div>
     </div>
   </div>

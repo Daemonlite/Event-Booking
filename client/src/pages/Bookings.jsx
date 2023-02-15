@@ -42,29 +42,32 @@ const Bookings = () => {
   const filteredBooking = booking.filter(book => book.user  === user._id)
 
   return (
-    
-    <div className="position books">
+    <div className="position">
+    <h1 className="text-center ">My Bookings</h1>
+    <div className="books">
       {filteredBooking.map(res => (
         <div key={res._id}>
- 
- <div className="card" style={{width:"20rem"}}>
 
-  <div className="card-body">
-    <h5 className="card-title">{res.eventName}</h5>
-    <p className="card-text">{res.location}</p>
-    <div className="card-text">${res.price}</div>
-    <p className="card-text">{res.date}</p>
- <div className="adds">
- <p onClick={() => deleteBooking(res._id)} className="btn btn-primary">Delete</p>
-    <a href="/checkout" className="btn btn-primary check">checkout</a>
- </div>
-  </div>
-</div>
+          <div className="card" style={{ width: "20rem" }}>
+
+            <div className="card-body">
+              <h5 className="card-title">{res.eventName}</h5>
+              <p className="card-text">{res.location}</p>
+              <div className="card-text">${res.price}</div>
+              <p className="card-text">{res.date}</p>
+              <div className="adds">
+                <p onClick={() => deleteBooking(res._id)} className="btn btn-primary">Delete</p>
+                <a href="/checkout" className="btn btn-primary check">checkout</a>
+              </div>
+            </div>
+          </div>
         </div>
       ))}
 
+      {filteredBooking.length === 0 && <p>you have no bookings,<a href="/home">book one?</a></p>}
 
-    </div>
+
+    </div></div>
   );
 };
 

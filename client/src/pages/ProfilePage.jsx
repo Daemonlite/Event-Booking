@@ -10,13 +10,10 @@ const ProfilePage = () => {
     if (!user) navigate("/login");
   }, [navigate]);
 
-  const logout = () => {
-    localStorage.removeItem("userInfo");
-    navigate("/login");
-  };
+
   return (
     <div className="position">
-      <div className="profile-img">
+      {/* <div className="profile-img">
         <img src={user.profile} alt="userProfile" className="profile" />
       </div>
       <div className="name">
@@ -28,7 +25,7 @@ const ProfilePage = () => {
       </div>
       <div>
        
-      </div>
+      </div> */}
       <hr />
     </div>
   );
